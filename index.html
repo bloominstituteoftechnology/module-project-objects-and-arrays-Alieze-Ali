@@ -23,16 +23,58 @@
     // 🧠 Example of usage:
     // buildPeter() // should return { firstName: "Peter", lastName: "Pan", age: 12 }
     function buildPeter() {
+      // Solution A:
+      // Step 1: Declare an empty object of peter
+      // Step 2: assign values to peter with . notation
+      // Step 3: return peter
+      // Step 4: call buildPeter
+      // Step 5: Note: you do not need to pass arguments bc you are returning SPECIFIC values, not values that will change everytime the function is called - duh! 
+      // Stretch: Clear the console and call the function to test
+      // let peter = {}
+      // peter.firstName = 'Peter';
+      // peter.lastName = 'Pan';
+      // peter.age = 12;
 
+      // return peter;
+
+        // Solution B: Short hand
+        // Step 1: return object with key value pairs hardcoded
+        return {
+          firstName: 'Peter',
+          lastName: 'Pan',
+          age: 12
+        }
+      
     }
+  
 
     // 👉 CHALLENGE 2
     // 🧠 The function buildUser takes three arguments and uses them to build an object and return it.
     // 🧠 Example of usage:
     // buildUser("John", "Smith", 30) // should return { firstName: "John", lastName: "Smith", age: 30 }
     function buildUser(firstName, lastName, age) {
+      // Method 1
+      // Step 1: Define the object by passing the arguments
+      // Step 2: Return arguments literal using shorthand notation
+      // Step 3: call function in console to check
+      
+      // return { firstName, lastName, age }
+
+      // Method 2
+      // Step 1: declare a variable, assign it to an empty object
+      // Step 2: Set 3 properties on the newly created object using . notiation
+      // Step 3: assign them to the corresponding arguments
+      // Step 4: return the result object     
+      // Stretch: call buildUser("John", "Smith", 30) in console to check
+      let user = {};
+      user.firstName = firstName;
+      user.lastName = lastName;
+      user.age = age;
+
+      return user;
 
     }
+   // buildUser("John", "Smith", 30);
 
     // 👉 CHALLENGE 3
     // 🧠 The function deletePrice takes an object as its argument and deletes its "price" property if it exists.
@@ -42,8 +84,26 @@
     // 🧠 Examples of usage:
     // deletePrice({ item: "Tesla Model 3", price: 40000 }) // should return { item: "Tesla Model 3" }
     // deletePrice({ item: "Kobo Libra 2" }) // should return { item: "Kobo Libra 2", priceless: true }
-    function deletePrice() {
-
+    function deletePrice(obj) {
+      // Step 1: pass in your object argument
+      // Step 3: create first if statement: 
+        // a: if the object's price is not undefined: 
+        // b: delete the objects price 
+          // note: use the 'delete' key word
+          // note: use . notation to access the price
+          // note: test the function in the console with price of 0: deletePrice({price: 0})
+          // price should delete when function price is tested
+      // Step 4: add else logic: if object (key) priceless (value) is true 
+        // note: else logic goes straight into {}
+      // Step 5: Return the object
+      // Stretch: test deletePrice({ item: "Tesla Model 3", price: 40000 }) & ({ item: "Kobo Libra 2" }) in console
+      if (obj.price !== undefined) {
+        delete obj.price;
+      } else {
+        obj.priceless = true;
+      }
+      return obj;
+     
     }
 
     // 👉 CHALLENGE 4
@@ -53,6 +113,27 @@
     // evenList(['a']) // should return false
     // evenList(['a', 'b']) // should return true
     function evenList(arr) {
+      // Step 1: Pass your array argument
+      // Step 2: Build your 1st if statement: 
+        // if array.length % 2 === 0; then return true
+      // Step 3: else return false;
+      // Alieze's logic
+      // if (arr.length % 2 === 0) {
+      //   return true; 
+      // } else {
+      //   return false;
+      // }
+
+      // Gabe's logic #1
+      let numOfElements = arr.length
+      let isEven = numOfElements % 2 === 0
+      if (isEven) {
+      return true
+      }
+      return false;
+
+      // Gabe's shorthand logic:
+      // return arr.length % 2 === 0;
 
     }
 
@@ -62,8 +143,19 @@
     // 🧠 Examples of usage:
     // firstOrLast(['a', 'b'], true) // should return 'a'
     // firstOrLast(['a', 'b'], false) // should return 'b'
-    function firstOrLast() {
-
+    function firstOrLast(arr, bool) {
+      // Step 1: pass arguments
+      // Step 2: Build if statement: if bool === true, return arr[0];
+      // Step 3: else: return arr.at(-1)
+        // note: if you are testing truthiness, it is already implied
+        // note: if only one comparison with 2 options, you can skip the 'else' statement and go right to the return
+      // Step 4: Test the examples of usage in console
+      // Woohoo!! 
+      if (bool) {
+        return arr[0];
+      }
+        return arr.at(-1);
+    
     }
 
     // 👉 CHALLENGE 6
@@ -72,7 +164,15 @@
     // 🧠 Examples of usage:
     // pushElement([], 1) // should return [1]
     // pushElement(['a', 'b'], 'c') // should return ['a', 'b', 'c']
-    function pushElement() {
+    function pushElement(arr, val) {
+      // Step 1: pass array and any value arguments
+      // Step 2: Assign the last element of the array to val, the new last element
+        // note: avoid using the push() method for now
+        // note: we use arr[arr.length] because this is the element that doesn't exist yet, it is outside of the original array, so we don't need a -1. This adds an extra element to the existing array.
+      // Step 3: Return the array (the original argument)
+      // Step 4: Take it for a drive in the console
+      arr[arr.length] = val;  
+      return arr; 
 
     }
 
@@ -88,8 +188,39 @@
     // 🧠 At each iteration of the loop, if the current character is not "x", then add it to the end of the result array.
     // 🧠 You can merge the result array back into a string by using join. Example: ["f", "o", "o"].join("") yields "foo"
     // 🧠 Do not forget to return your rejoined string!
-    function stripX() {
+    function stripX(str) {
+      // Step 1: pass argument - str
+      // Step 2: Create empty result array
+      // Step 3: Split the string into an array of characters, assign to a variable (splitStr)
+        // note: test your splitStr var with a console.log in the function to make sure string is splitting
+        // Note: test your function thus far in the console with stripX('foo') to check if the str is splitting
+      // Step 4: loop over the indices (idx) in split with for/let loop
+      // Step 5: Declare a variable for characters assign it to splitStr index array; this will grab the index of the characters in the array
+        // a: take a moment to test function with console.log(char, splitStr)
+        // b: take a beat to test drive the function stripX('foo') in the console
+        // c: test console.log(idx, splitStr[idx]) in your function
+        // d: test stripX('foo') again & make sure you're getting chars on your indices
+      // Step 5: add your conditional if statement logic: 
+        // a: if char !== 'x': add it to new array and the new arrays length array & assign that to char
+        // b: console.log(result) to test
+        // c: run stripX('foo') in console
+      // Step 6: return your result array & attach the join key method with . notation
 
+      let result = []
+      let splitStr = str.split('')
+      //console.log(splitStr)
+      for (let idx in splitStr) {
+        let char = splitStr[idx]
+        //console.log(char, splitStr)
+        //console.log(idx, splitStr[idx])
+        if (char !== 'x') {
+          result[result.length] = char
+          //console.log(result)
+        }
+       
+      }
+      return result.join('');
+     
     }
 
     // 👉 CHALLENGE 8
@@ -101,8 +232,36 @@
     // ❗ Important Notes:
     // 🧠 Try to solve this problem without looking at how you solved the previous one.
     // 🧠 If you need to look, do not copy & paste code. Take a peek and then work from memory!
-    function stripChar() {
 
+    // Step 1: Pass Arguments
+    // Step 2: Declare a result array
+    // Step 3: Split the string into an array of characters
+      // Step 3a: Assign the split string to a var called splitStr
+      // Step 3b: test your splitStr var with console.log(splitStr)
+    // Step 4: Add for/let loop to loop over characters in arrays 
+    // Step 5: At each iteration - Declare a new character variable; assign it to the index of the splitStr variable
+      // Step 5a: console.log(char, splitStr) console.log(idx, splitStr[idx]) 
+      // Step 5b: run the function in the console
+    // Step 6: Add conditional logic:
+      // Step 6a: if the new character !== char: strip that character : 
+      // Step 6b: add remaining characters to result array, result.length
+      // Step 6c: assign the results to the new character array
+    // Step 7: Return result array joined back together with .join('')
+    // Woe!!
+    function stripChar(str, char) {
+      let result = []
+      let splitStr = str.split('')
+      //  console.log(splitStr)
+      for (let idx in splitStr) {
+        let character = splitStr[idx]
+        // console.log(char, splitStr)
+        // console.log(idx, splitStr[idx]) 
+        if (character !== char) {
+          result[result.length] = character
+           //console.log(result)
+        }
+      }
+      return result.join('');
     }
 
     // 👉 CHALLENGE 9
@@ -114,9 +273,25 @@
     // getProps({ lastName: "Smith", age: 35 }) // should return ["lastName"]
     // getProps({ firstName: "Jane", married: false }) // should return ["firstName"]
     // getProps({ name: "Bamby", favFood: "flowers" }) // should return ["name", "favFood"]
-    function getProps() {
 
+    // Step 1: pass obj argument
+    // Step 2: declare an empty array for the results (array of property names)
+    // Step 3: Loop over object with for/let 
+    // Step 4: Add conditional logic: 
+      // Step 4a: if key does not equal 'age' and if key does not equal 'married'
+      // Step 4b: Include it in the result set's result.length array
+      // Step 4c: assign the results to the key
+    function getProps(obj) {
+      //console.log(obj)
+      let result = []
+      for (let key in obj) {
+        if (key !== 'age' && key !== 'married') {
+          result[result.length] = key
+        }
+      }
+      return result;
     }
+   
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
